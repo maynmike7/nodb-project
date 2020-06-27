@@ -1,11 +1,19 @@
 import React, {Component} from 'react'
-import Characters from './Characters'
+
 
 class CharacterSelect extends Component {
+    
+    handleSelect = () => {
+        const {chars} = this.props
+        this.props.selectFN(chars.ThumbnailUrl)
+    }
+
     render(){
+        const {chars} = this.props
+
         return(
-            <div className='characterBox'>
-                <img src={this.props.characters.ThumbnailUrl} alt={this.props.characters.name}/>
+            <div className='characterBox' onClick={this.handleSelect}>
+                <img src={chars.ThumbnailUrl} alt={chars.name}/>
             </div>
         )
     }

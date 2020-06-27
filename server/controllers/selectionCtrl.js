@@ -6,9 +6,9 @@ module.exports = {
         res.status(200).send(selectedChar)
     },
     selectChar: (req, res) => {
-        const {character} = req.body
+        const {char} = req.body
 
-        character.id = id
+        char.id = id
         id++
 
         selectedChar.push(character)

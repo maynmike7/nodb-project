@@ -27,7 +27,8 @@ class Characters extends Component {
         const mappedCharacters = this.state.characters.map((characters, i) => (
             <CharacterSelect 
                 key={i}
-                characters={characters}/>
+                chars={characters}
+                selectFN={this.props.selectFN}/>
         ))
         return(
             <div className='characterFlex'>
