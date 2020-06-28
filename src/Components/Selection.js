@@ -1,8 +1,20 @@
 import React from 'react';
+import Select from './Select';
 
 const Selection = props => {
+    const mappedCharacters = props.selectedCharacters.map((character, i) => (
+        <Select 
+            key={i}
+            character={character}
+            unselectFN={props.unselectFN}/>
+    ))
+
     return(
-        <div>Selection</div>
+        <div>
+            <div className='characterFlex'>
+                {mappedCharacters}
+            </div>
+        </div>
     )
 }
 

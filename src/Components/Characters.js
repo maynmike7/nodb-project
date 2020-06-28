@@ -6,28 +6,23 @@ class Characters extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            characters: []
+            characterMenu: []
         }
     }
 
     componentDidMount(){
-        this.getCharacters()
-    }
-
-    getCharacters = () => {
         axios.get('/api/character-selection')
         .then(res => {
-            this.setState({characters: res.data})
+            this.setState({characterMenu: res.data})
         })
         .catch(err => console.log(err))
     }
 
     render(){
-        console.log(this.state.characters)
-        const mappedCharacters = this.state.characters.map((characters, i) => (
+        const mappedCharacters = this.state.characterMenu.map((characters, i) => (
             <CharacterSelect 
                 key={i}
-                chars={characters}
+                characters={characters}
                 selectFN={this.props.selectFN}/>
         ))
         return(

@@ -21,8 +21,16 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
-  selectCharacter = character => {
-    axios.post('/api/selected-character', {character})
+  selectCharacter = (characters) => {
+    axios.post('/api/selected-character', {characters})
+    .then(res => {
+      this.setState({selectedCharacters: res.data})
+    })
+    .catch(err => console.log(err))
+  }
+
+  unselectCharacter = (id) => {
+    axios.delete(`/api/selected-character/${id}`)
     .then(res => {
       this.setState({selectedCharacters: res.data})
     })
@@ -30,14 +38,15 @@ class App extends Component {
   }
 
   render(){
-    // console.log(this.state.selectedCharacters)
+    console.log(this.state.selectedCharacters)
     return (
       <div className="App">
         <Header />
         <Characters 
           selectFN={this.selectCharacter}/>
         <Selection 
-          selectedCharacters={this.state.selectedCharacters}/>
+          selectedCharacters={this.state.selectedCharacters}
+          unselectFN={this.unselectCharacter}/>
       </div>
     )
   }

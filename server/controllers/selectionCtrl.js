@@ -1,17 +1,31 @@
-const selectedChar = []
+const selectedCharacters = []
 let id = 1
 
 module.exports = {
     getSelectedChars: (req, res) => {
-        res.status(200).send(selectedChar)
+        res.status(200).send(selectedCharacters)
     },
-    selectChar: (req, res) => {
-        const {char} = req.body
 
-        char.id = id
+    selectCharacter: (req, res) => {
+        const {characters} = req.body;
+        console.log(req.body)
+
+        characters.id = id
         id++
 
-        selectedChar.push(character)
-        res.status(200).send(selectedChar)
+        selectedCharacters.push(characters)
+        res.status(200).send(selectedCharacters)
+    },
+
+    editTeam: (req, res) => {
+
+    },
+
+    unselectCharacter: (req, res) => {
+        const {id} = req.params
+
+        const index = selectedCharacters.findIndex(e => e.id === +id)
+        selectedCharacters.splice(index, 1)
+        res.status(200).send(selectedCharacters)
     }
 }
