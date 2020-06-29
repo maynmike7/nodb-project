@@ -29,6 +29,14 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
+  editTeam = (id) => {
+    axios.put( `/api/selected-character/${id}`, {team: 'RED'})
+    .then(res => {
+      this.setState({selectedCharacters: res.data})
+    })
+    .catch(err => console.log(err))
+  }
+
   unselectCharacter = (id) => {
     axios.delete(`/api/selected-character/${id}`)
     .then(res => {
@@ -46,6 +54,7 @@ class App extends Component {
           selectFN={this.selectCharacter}/>
         <Selection 
           selectedCharacters={this.state.selectedCharacters}
+          teamFN={this.editTeam}
           unselectFN={this.unselectCharacter}/>
       </div>
     )

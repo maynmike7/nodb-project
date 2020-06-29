@@ -6,6 +6,7 @@ const Selection = props => {
         <Select 
             key={i}
             character={character}
+            teamFN={props.teamFN}
             unselectFN={props.unselectFN}/>
     ))
 

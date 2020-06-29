@@ -9,6 +9,7 @@ app.get('/api/character-selection', charactersCtrl.getCharacters)
 
 app.get('/api/selected-character', selectionCtrl.getSelectedChars)
 app.post('/api/selected-character', selectionCtrl.selectCharacter)
+app.put('/api/selected-character/:id', selectionCtrl.editTeam)
 app.delete('/api/selected-character/:id', selectionCtrl.unselectCharacter)
 
 app.listen(4040, () => console.log('Server is running on 4040'))
