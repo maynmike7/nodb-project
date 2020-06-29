@@ -17,7 +17,7 @@ class CharacterSelect extends Component {
 
         return(
             <div className='characterBox' onClick={this.handleSelect}>
-                <img src={characters.ThumbnailUrl} alt={characters.name}/>
+                <img className='selection-menu' src={characters.ThumbnailUrl} alt={characters.name}/>
             </div>
         )
     }
